@@ -1,39 +1,26 @@
 #include <stdio.h>
-#include <string.h>
-#include <ctype.h>
 
 int main() {
-    char message[200], ch;
-    int key, i;
+    char text[100];
+    int k, i;
 
-    
-    printf("Enter a message: ");
-    fgets(message, sizeof(message), stdin);
+    printf("Enter text: ");
+    scanf("%s", text);
 
-   
-    printf("Enter key (1-25): ");
-    scanf("%d", &key);
+    printf("Enter shift (1-25): ");
+    scanf("%d", &k);
 
-    
-    for(i = 0; message[i] != '\0'; i++) {
-        ch = message[i];
-
-        
-        if(isupper(ch)) {
-            message[i] = ((ch - 'A' + key) % 26) + 'A';
+    for (i = 0; text[i] != '\0'; i++) {
+        if (text[i] >= 'a' && text[i] <= 'z') {
+            text[i] = ((text[i] - 'a' + k) % 26) + 'a';
         }
-       
-        else if(islower(ch)) {
-            message[i] = ((ch - 'a' + key) % 26) + 'a';
-        }
-        
-        else {
-            message[i] = ch;
+        else if (text[i] >= 'A' && text[i] <= 'Z') {
+            text[i] = ((text[i] - 'A' + k) % 26) + 'A';
         }
     }
 
-    
-    printf("Encrypted message: %s", message);
+    printf("Encrypted: %s", text);
 
     return 0;
 }
+
